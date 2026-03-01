@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<meta charset="utf-8"/>
+<meta content="pandoc" name="generator"/>
+<meta content="width=device-width, initial-scale=1.0, user-scalable=yes" name="viewport"/>
+<meta content="小林和真(名古屋大学 理学部 数理学科)" name="author"/>
+<title>群論</title>
+<style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  body{
+  font-family:"Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  }
+  p {
+  font-size:16px;
+  text-indent: 1em;
+  line-height:26px;
+  letter-spacing:0.5px;
+  margin-bottom:-6px;
+  }
+  h2{
+  filter:drop-shadow(1px 2px 0px #BFF2FB);
+  margin-bottom:-2px;
+  margin-top:-10px;
+  margin-left:4px;
+  }
+  h3{
+  margin-bottom:-6px;
+  margin-left:6px;
+  margin-top:30px;
+  }
+  .q,.a,.conclusion{
+  font-size:130%;
+  font-weight:bold;
+  }
+  .q{
+  color:0000CC;
+  }
+  .a{
+  color:CC0000;
+  }
+  .hint{
+  font-size:85%;
+  }
+  .main{
+  background-color:EEEEEE;
+  padding:20px 0px;
+  }
+  body{
+  width:90%;
+  margin:30px auto;
+  }
+          hr{
+              margin:20px 0px 20px;
+          }
+
+  .otherpagediv {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 80px;
+      padding: 0 20px;
+      margin:20px 0 0;
+  }
+  .previousdiv,.homediv,.nextdiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 200px;
+  }
+  .previousdiv {
+      align-items: flex-start;
+      text-align: left;
+  }
+  .homediv {
+      align-items: center;
+      text-align: center;
+  }
+  .nextdiv {
+      align-items: flex-end;
+      text-align: right;
+  }
+  .previous,.home,.next{
+  font-size:12px;
+  line-height:1.0;
+  text-decoration: none;
+  color:blue;
+  margin:3.0;
+  }
+  iframe{
+              display:block;
+              margin:0 auto;
+              width:100%;
+              height:500px;
+              border:none;
+          }
+
+  @media screen and (min-width: 960px) {
+  body{
+  max-width:800px;
+  margin-top:70px;
+  margin-left:auto;
+  margin-right:auto;
+  }
+  .previous,.home,.next{
+  font-size:16px;
+  }
+  }
+  </style>
+<meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" name="viewport"/>
+<!-- 証明を折りたたむための設定 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const proofDivs = document.querySelectorAll('div.proof');
+    proofDivs.forEach(function(div) {
+      const details = document.createElement('details');
+      const summary = document.createElement('summary');
+      summary.className = 'proof-details-summary';
+      const strong = document.createElement('strong');
+      strong.textContent = '証明.'; // summary に入れる文字列（必要なら調整）
+      summary.appendChild(strong);
+      details.appendChild(summary);
+
+      const inner = document.createElement('div');
+      inner.className = 'proof-details-inner';
+
+      const firstParagraph = div.querySelector('p');
+      if (firstParagraph) {
+        const fc = firstParagraph.firstChild;
+        if (fc && fc.nodeType === 1 && fc.tagName.toLowerCase() === 'strong' &&
+            fc.textContent.trim().startsWith('証明')) {
+          fc.parentNode.removeChild(fc);
+          if (firstParagraph.firstChild && firstParagraph.firstChild.nodeType === 3 &&
+              /^\s*$/.test(firstParagraph.firstChild.textContent)) {
+            firstParagraph.removeChild(firstParagraph.firstChild);
+          }
+        } else {
+          const txt = firstParagraph.textContent;
+          const newTxt = txt.replace(/^\s*証明[。\.\s]*\s*/u, '');
+          if (newTxt !== txt) firstParagraph.textContent = newTxt;
+        }
+      }
+      while (div.firstChild) {
+        inner.appendChild(div.firstChild);
+      }
+      details.appendChild(inner);
+      div.parentNode.replaceChild(details, div);
+    });
+  });
+  </script>
+<!-- 補足を折りたたむための設定 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const suppDivs = document.querySelectorAll('div.supp');
+    suppDivs.forEach(function(div) {
+      const details = document.createElement('details');
+      details.className = 'supp-details';
+      const summary = document.createElement('summary');
+      summary.className = 'supp-details-summary';
+      const strong = document.createElement('strong');
+      strong.textContent = '補足.'; // summary に入れる文字列（必要なら調整）
+      summary.appendChild(strong);
+      details.appendChild(summary);
+
+      const inner = document.createElement('div');
+      inner.className = 'supp-details-inner';
+
+      const firstParagraph = div.querySelector('p');
+      if (firstParagraph) {
+        const fc = firstParagraph.firstChild;
+        if (fc && fc.nodeType === 1 && fc.tagName.toLowerCase() === 'strong' &&
+            fc.textContent.trim().startsWith('補足')) {
+          fc.parentNode.removeChild(fc);
+          if (firstParagraph.firstChild && firstParagraph.firstChild.nodeType === 3 &&
+              /^\s*$/.test(firstParagraph.firstChild.textContent)) {
+            firstParagraph.removeChild(firstParagraph.firstChild);
+          }
+        } else {
+          const txt = firstParagraph.textContent;
+          const newTxt = txt.replace(/^\s*補足[。\.\s]*\s*/u, '');
+          if (newTxt !== txt) firstParagraph.textContent = newTxt;
+        }
+      }
+      while (div.firstChild) {
+        inner.appendChild(div.firstChild);
+      }
+      details.appendChild(inner);
+      div.parentNode.replaceChild(details, div);
+    });
+  });
+  </script>
+<style>
+    details > summary.proof-details-summary {
+      padding: 2px 6px;
+      border: 3px double;
+      width: 3.4em;
+      background-color: #ddd;
+      margin: 4px;
+      cursor: pointer;
+    }
+    /* details > summary.supp-details-summary {
+      padding: 2px 6px;
+      width: 3.4em;
+      margin: 4px;
+      cursor: pointer;
+    } */
+
+    .proof-details-inner {
+      background-color: #dddddd82;
+      padding: 20px;
+      margin: 0;
+    }
+
+    details > ol {
+      background-color: #dddddd82;
+      margin: 0;
+    }
+
+      details > li {
+      background-color: #dddddd82;
+      margin: 0;
+    }
+
+    details:open > summary {
+      background-color: #a9e0f4;
+    }
+
+    .math.display {	
+      overflow-x: scroll;
+    }
+
+    .defi {
+          background-color: #f2fafc;
+          padding: 10px; 
+          margin-top: 20px;
+          margin-bottom: 10px; 
+          border:3px double #333333; 
+    }
+    .prop,.thm,.lemma {
+        background-color: #fffdee;
+        padding: 10px; 
+        margin-top: 20px; 
+        margin-bottom: 5px; 
+        border:3px double #333333; 
+    }
+    .defi > p,.prop > p,.thm > p,.lemma > p {
+        text-indent: 0em;
+        margin: 0px;
+    }
+
+    summary.supp-details-summary {
+        border: 1px solid #ccc;
+        list-style: none; 
+        display: block; 
+        padding: 6px 7px;
+        margin: 10px;
+        background-color: #f7f7f7;
+        cursor: pointer;
+        font-weight: bold;
+        position: relative;
+        text-align: center; 
+    }
+
+    summary.supp-details-summary::after {
+        content: '+'; 
+        position: absolute;
+        right: 15px;
+        top: 50%; 
+        transform: translateY(-50%); 
+        font-size: 1.2em;
+    }
+
+    details.supp-details[open] summary.supp-details-summary {
+        background-color: #eee;
+        border-bottom: 1px solid #ccc;
+    }
+
+    details.supp-details[open] summary.supp-details-summary::after {
+        content: '−'; 
+    }
+  </style>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+</head>
+<body>
+<h2 id="群の定義-1">群の定義</h2>
+
+
+<p>ここではまず群の定義を行い, 別の同値な定式化についても触れる.
+そして定義から直接的に導かれる基本的事実について確認する.
+その中で基本的な記法の導入も行う.</p>
+
+
+<h3 id="群の定義-2">群の定義</h3>
+
+
+<div class="defi" id="def:group">
+<p><strong>定義 1</strong> (群). <span class="math inline">\(G\)</span>を集合とする. 以下の条件を満たす組<span class="math inline">\((G,\cdot,e,{}^{-1})\)</span>を<strong>群(group)</strong>という.</p>
+<ol>
+<li><p>(二項演算の閉性) <span class="math inline">\(G\)</span>上の閉じた二項演算<span class="math inline">\(\cdot\;\colon G\times G\to
+G\)</span>が定まっている(つまり<span class="math inline">\((G,\cdot)\)</span>がマグマである).</p></li>
+<li><p>(結合法則) 1.を満たす<span class="math inline">\((G,\cdot)\)</span>に対し, 次の結合法則が成り立つ.
+<span class="math display">\[\begin{align*}
+                \forall x,y,z\in G,\quad (x\cdot y)\cdot z=x\cdot
+(y\cdot z)
+            
+\end{align*}\]</span></p></li>
+<li><p>(左/右単位元の存在) ある<span class="math inline">\(e\in
+G\)</span>が存在して <span class="math display">\[\begin{align*}
+                \forall x\in G,\quad e\cdot
+x=x,\quad(\text{または}x\cdot e=x)
+            
+\end{align*}\]</span> が成り立つ. この<span class="math inline">\(e\)</span>を<span class="math inline">\(G\)</span>の<strong>左単位元(left identity
+element)</strong>(または<strong>右単位元(left identity
+element)</strong>)という.</p></li>
+<li><p>(左/右逆元の存在) 3.を満たす<span class="math inline">\((G,\cdot
+,e)\)</span>に対し, <span class="math inline">\(G\)</span>上の閉じた単項演算<span class="math inline">\({}^{-1}\colon G\to G;\,x\mapsto
+            x^{-1}\)</span>が定まっていて, 任意の<span class="math inline">\(x\in G\)</span>に対し <span class="math display">\[\begin{align*}
+                x^{-1}\cdot x=e,\quad(\text{または}x\cdot x^{-1}=e)
+            
+\end{align*}\]</span> が成り立つ. この<span class="math inline">\(x^{-1}\)</span>を<span class="math inline">\(x\)</span>の<strong>左逆元(left inverse
+element)</strong>(または<strong>右逆元(left inverse
+element)</strong>)という.</p></li>
+</ol>
+</div>
+
+
+<p>群<span class="math inline">\((G,\cdot,e,{}^{-1})\)</span>には単位元が存在するので,
+<span class="math inline">\(G\)</span>は空集合ではないことが定義から従う.</p>
+
+
+<p>群は<span class="math inline">\((G,\cdot,e,{}^{-1})\)</span>の組のことであるが,
+後に示すように群において単位元や逆元は一意に定まるのでこれらを省略して<span class="math inline">\((G,\cdot)\)</span>と表す. 群<span class="math inline">\((G,\cdot)\)</span>は演算との組であるが,
+演算が明らかで誤解が生じない場合は単に群<span class="math inline">\(G\)</span>と言ったり,
+群の演算の記号を省略して<span class="math inline">\(x\cdot
+y\)</span>を<span class="math inline">\(xy\)</span>と書いたりすることもある.</p>
+
+
+<h3 id="可除律による群の特徴づけ">可除律による群の特徴づけ</h3>
+
+
+<p>群を定義するとき,
+単位元の存在と逆元の存在の代わりに次に示す可除律を要請することもできる.</p>
+
+
+<div class="prop">
+<p><strong>命題 2</strong> (可除律による群の特徴づけ). <span class="math inline">\(G\)</span>を空でないマグマとするとき結合法則と左右の可除律
+<span class="math display">\[\begin{align*}
+            \forall a,b \in G,\,\exists x,y\in G,\,ax=b,\,ya=b
+        
+\end{align*}\]</span> が成り立つならば単位元および逆元が存在する.</p>
+</div>
+
+
+<div class="proof">
+<p><strong>証明.</strong> 可除律より<span class="math inline">\(a\in
+G\)</span>に対してある<span class="math inline">\(e_r,e_l\in
+G\)</span>で<span class="math inline">\(a e_r=a,\,e_l
+a=a\)</span>となるものが存在する. ここで任意に<span class="math inline">\(x\in G\)</span>をとれば再び可除律より <span class="math display">\[\begin{align*}
+            x=ap,\quad x=qa
+        
+\end{align*}\]</span> となる<span class="math inline">\(p,q\in
+G\)</span>が存在する. このとき結合法則を用いて次のようにできる. <span class="math display">\[\begin{align*}
+            x=qa=q(ae_r)=(qa)e_r=xe_r \\
+            x=ap=(e_la)p=e_l(ap)=e_lx
+        
+\end{align*}\]</span> 特にそれぞれ<span class="math inline">\(x=e_l,e_r\)</span>とすれば<span class="math inline">\(e_l=e_le_r=e_r\)</span>が分かるので<span class="math inline">\(e_r=e_l=e\)</span>とおけば任意の<span class="math inline">\(x\in G\)</span>に対して <span class="math display">\[\begin{align*}
+            x=xe=ex
+        
+\end{align*}\]</span> が成り立つ. よってこの<span class="math inline">\(e\)</span>が<span class="math inline">\(G\)</span>の単位元である.
+逆に単位元と逆元が存在するときは可除律が成り立つこともわかる. ◻</p>
+</div>
+
+
+<div class="supp">
+<p><strong>補足 3</strong>.
+準群(結合法則は成り立たないが可除律が成り立つ)において単位元が存在するとは限らない.
+実際次の演算表を持つ準群がある <span class="math display">\[\begin{align*}
+        \begin{array}{c|cccc}
+             &amp; a &amp; b &amp; c &amp; d \\
+            \hline
+            a &amp; c &amp; b &amp; a &amp; d \\
+            b &amp; b &amp; a &amp; d &amp; c \\
+            c &amp; a &amp; d &amp; c &amp; b \\
+            d &amp; d &amp; c &amp; b &amp; a
+        \end{array}
+    
+\end{align*}\]</span> 結合法則が成り立たないことは <span class="math display">\[\begin{align*}
+        (ac)d=ad=d,\quad a(cd)=ab=b
+    
+\end{align*}\]</span> からわかる.
+そしてこの準群は単位元を持たないことも演算表からわかる.</p>
+</div>
+
+
+<h3 id="アーベル群の定義">アーベル群の定義</h3>
+
+
+<div class="defi">
+<p><strong>定義 4</strong> (アーベル群). 群<span class="math inline">\((G,\cdot)\)</span>において, 任意の<span class="math inline">\(x,y\in G\)</span>が交換法則: <span class="math display">\[\begin{align*}
+            \forall x,y\in G,\quad x\cdot y=y\cdot x
+        
+\end{align*}\]</span> を満たすとき<span class="math inline">\((G,\cdot,e,{}^{-1})\)</span>を<strong>アーベル群(abelian
+group)</strong>または<strong>可換群(commutative group)</strong>という.
+アーベル群でない群は<strong>非アーベル群(non-abelian
+group)</strong>または<strong>非可換群(non-commutative
+group)</strong>という.
+特にアーベル群の演算は<strong>加法(addition)</strong>と呼び, <span class="math inline">\(+\)</span>で書くことも多い.</p>
+</div>
+
+
+<h3 id="結合法則から従う演算の略記">結合法則から従う演算の略記</h3>
+
+
+<p>結合法則により<span class="math inline">\((xy)z=x(yz)\)</span>なのでこれをかっこを省略して<span class="math inline">\(xyz\)</span>とかく.
+結合法則が成り立つことから次のような略記がwell-definedであることが従う.
+<span class="math inline">\(G\)</span>を群として<span class="math inline">\(x\in G\)</span>に対し, <span class="math inline">\(n\)</span>を正の整数として <span class="math display">\[\begin{align*}
+        x^n:=\underbrace{xx\cdots xx}_{\text{$n$個}},\quad x^0:=e,\quad
+x^{-n}:=\underbrace{x^{-1}x^{-1}\cdots x^{-1}x^{-1}}_{\text{$n$個}}
+    
+\end{align*}\]</span> のように表す. <span class="math inline">\((G,+)\)</span>がアーベル群であるときにも同様の次の略記を用いる.
+<span class="math display">\[\begin{gather*}
+        nx=\underbrace{x+x+\cdots +x+x}_{\text{$n$個}},\quad 0x=0:=e \\
+        -x:=x^{-1},\quad -nx:=\underbrace{x^{-1}+x^{-1}+\cdots
++x^{-1}+x^{-1}}_{\text{$n$個}}
+    
+\end{gather*}\]</span></p>
+
+
+<h3 id="両側単位元と両側逆元の存在">両側単位元と両側逆元の存在</h3>
+
+
+<p><span class="math inline">\(G\)</span>を空でないマグマで結合法則が成り立つものとするとき,
+次の条件を満たす<span class="math inline">\(e\in G\)</span>を<span class="math inline">\(G\)</span>の<strong>両側単位元(two-sided identity
+element)</strong>または単に<strong>単位元(identity
+element)</strong>という. <span class="math display">\[\begin{align*}
+        \forall x\in G,\quad ex=xe=x
+    
+\end{align*}\]</span> また, <span class="math inline">\(x\in
+G\)</span>に対し次の条件を満たすような<span class="math inline">\(x^{-1}\in G\)</span>を<span class="math inline">\(x\)</span>の<strong>両側逆元(two-sided inverse
+element)</strong>または単に<strong>逆元(inverse element)</strong>という.
+<span class="math display">\[\begin{align*}
+        x^{-1}x=xx^{-1}=e
+    
+\end{align*}\]</span></p>
+
+
+<div class="prop">
+<p><strong>命題 5</strong> (両側単位元と両側逆元の存在). 群<span class="math inline">\(G\)</span>に定められた左単位元と左逆元(または右単位元と右逆元)はそれぞれ両側単位元,
+両側逆元である.</p>
+</div>
+
+
+<div class="proof">
+<p><strong>証明.</strong> 左単位元<span class="math inline">\(e\)</span>と<span class="math inline">\(x\in
+G\)</span>の左逆元<span class="math inline">\(x^{-1}\in
+G\)</span>が存在すると仮定する. <span class="math inline">\(x^{-1}x=e\)</span>の両辺に<span class="math inline">\(x^{-1}\)</span>を右からかけることで <span class="math display">\[\begin{align*}
+            x^{-1}x &amp;= e \\
+            (x^{-1}x)x^{-1} &amp;= ex^{-1} \\
+            x^{-1}(xx^{-1}) &amp;= x^{-1}
+        
+\end{align*}\]</span> さらに<span class="math inline">\(x^{-1}\)</span>の左逆元が存在するのでそれを<span class="math inline">\(x^*\)</span>とすれば, <span class="math inline">\(x^*\)</span>を左からかけることで <span class="math display">\[\begin{align*}
+            x^*(x^{-1}(xx^{-1})) &amp;= x^*x^{-1} \\
+            ((x^*x^{-1})x)x^{-1} &amp;= e \\
+            (ex)x^{-1} &amp;= e \\
+            xx^{-1} &amp;= e
+        
+\end{align*}\]</span> 次に, 今得られた<span class="math inline">\(xx^{-1}=e\)</span>の両辺に右から<span class="math inline">\(x\)</span>をかけることで <span class="math display">\[\begin{align*}
+            (xx^{-1})x &amp;= ex \\
+            x(x^{-1}x) &amp;= x \\
+            xe &amp;= x
+        
+\end{align*}\]</span> 以上より<span class="math inline">\(e\)</span>は<span class="math inline">\(G\)</span>の両側単位元であり, <span class="math inline">\(x^{-1}\)</span>は<span class="math inline">\(x\)</span>の両側逆元である.</p>
+<p>右単位元, 右逆元の場合の証明は以下の補足に記す.</p>
+<div class="supp">
+<p><strong>補足 6</strong>. 右単位元<span class="math inline">\(e\)</span>と<span class="math inline">\(x\in
+G\)</span>の右逆元<span class="math inline">\(x^{-1}\in
+G\)</span>が存在すると仮定する. <span class="math inline">\(xx^{-1}=e\)</span>の両辺に<span class="math inline">\(x^{-1}\)</span>を左からかけることで <span class="math display">\[\begin{align*}
+            x^{-1}x &amp;= e \\
+            x^{-1}(xx^{-1}) &amp;= x^{-1}e \\
+            (x^{-1}x)x^{-1} &amp;= x^{-1}
+        
+\end{align*}\]</span> さらに<span class="math inline">\(x^{-1}\)</span>の右逆元が存在するのでそれを<span class="math inline">\(x^*\)</span>とすれば, <span class="math inline">\(x^*\)</span>を右からかけることで <span class="math display">\[\begin{align*}
+            ((x^{-1}x)x^{-1})x^* &amp;= x^{-1}x^* \\
+            x^{-1}(x(x^{-1}x^*)) &amp;= e \\
+            x^{-1}(xe) &amp;= e \\
+            x^{-1}x &amp;= e
+        
+\end{align*}\]</span> 次に, 今得られた<span class="math inline">\(x^{-1}x=e\)</span>の両辺に左から<span class="math inline">\(x\)</span>をかけることで <span class="math display">\[\begin{align*}
+            x(x^{-1}x) &amp;= xe \\
+            (xx^{-1})x &amp;= x \\
+            ex &amp;= x
+        
+\end{align*}\]</span> 以上より<span class="math inline">\(e\)</span>は両側単位元であり, <span class="math inline">\(x^{-1}\)</span>は<span class="math inline">\(x\)</span>の両側逆元である.</p>
+</div>
+<p> ◻</p>
+</div>
+
+
+<p>これらの事実から, 以降は単位元と言えば両側単位元を指し,
+逆元と言えば両側逆元を指すものとする.</p>
+
+
+<h3 id="単位元-逆元の一意性">単位元, 逆元の一意性</h3>
+
+
+<div class="prop">
+<p><strong>命題 7</strong> (単位元, 逆元の一意性). 群<span class="math inline">\(G\)</span>の単位元はただ一つである. 任意の<span class="math inline">\(x\in G\)</span>に対する逆元は各<span class="math inline">\(x\)</span>に対しただ一つ定まる.</p>
+</div>
+
+
+<div class="proof">
+<p><strong>証明.</strong> まず<span class="math inline">\(e_1,e_2\in
+G\)</span>をともに単位元とする. すなわち次の二つの式が任意の<span class="math inline">\(x\in G\)</span>で成立すると仮定する. <span class="math display">\[\begin{align*}
+            e_1x=xe_1=x,\quad e_2x=xe_2=x
+        
+\end{align*}\]</span> このとき<span class="math inline">\(e_1\)</span>が単位元であるという条件において<span class="math inline">\(x=e_2\)</span>とすれば<span class="math inline">\(e_1e_2=e_2\)</span>を得る. 同様にして<span class="math inline">\(e_2\)</span>が単位元であるという条件において<span class="math inline">\(x=e_1\)</span>とすれば<span class="math inline">\(e_1e_2=e_1\)</span>を得る. 以上より<span class="math inline">\(e_1=e_2\)</span>,
+すなわち単位元がただ一つであることが示された.</p>
+<p>次に<span class="math inline">\(x\in G\)</span>として<span class="math inline">\(x_1,x_2\)</span>がともに<span class="math inline">\(x\)</span>の逆元であるとすると, 単位元<span class="math inline">\(e\)</span>を用いて <span class="math display">\[\begin{align*}
+            xx_1=x_1x=e,\quad xx_2=x_2x=e
+        
+\end{align*}\]</span> が成り立つ. このことから <span class="math display">\[\begin{align*}
+            xx_1=xx_2
+        
+\end{align*}\]</span> である. この両辺に<span class="math inline">\(x_1\)</span>(または<span class="math inline">\(x_2\)</span>)をかければ関係式<span class="math inline">\(x_1x=e\)</span>と結合法則を用いて <span class="math display">\[\begin{align*}
+            x_1(xx_1) &amp;= x_1(xx_2) \\
+            (x_1x)x_1 &amp;= (x_1x)x_2 \\
+            x_1 &amp;= x_2
+        
+\end{align*}\]</span> となる. よって逆元の一意性も示された. ◻</p>
+</div>
+
+
+<h3 id="逆元の性質">逆元の性質</h3>
+
+
+<div class="prop">
+<p><strong>命題 8</strong> (逆元の性質). <span class="math inline">\(G\)</span>を群とする. <span class="math inline">\(x,y\in G\)</span>に対して次が成り立つ. <span class="math display">\[\begin{align*}
+            e^{-1}=e,\quad (xy)^{-1}=y^{-1}x^{-1},\quad (x^{-1})^{-1}=x
+        
+\end{align*}\]</span></p>
+</div>
+
+
+<div class="proof">
+<p><strong>証明.</strong> 単位元の定義<span class="math inline">\(ex=xe=x\)</span>において<span class="math inline">\(x=e\)</span>とすれば <span class="math display">\[\begin{align*}
+            ee=e
+        
+\end{align*}\]</span> これは<span class="math inline">\(e\)</span>が<span class="math inline">\(e\)</span>自身の逆元であることを表しているので<span class="math inline">\(e^{-1}=e\)</span>. 次に<span class="math inline">\(y^{-1}x^{-1}\)</span>が<span class="math inline">\(xy\)</span>の逆元であることを示す.
+結合律を用いれば次のように計算できる. <span class="math display">\[\begin{align*}
+            (xy)(y^{-1}x^{-1})=x(yy^{-1})x=xx^{-1}=e \\
+            (y^{-1}x^{-1})(xy)=y(x^{-1}x)y=y^{-1}y=e
+        
+\end{align*}\]</span> よって<span class="math inline">\((xy)^{-1}=y^{-1}x^{-1}\)</span>が成り立つ. <span class="math inline">\((x^{^-1})^{-1}=x\)</span>は<span class="math inline">\(x^{-1}\)</span>の定義式<span class="math inline">\(xx^{-1}=x^{-1}x=e\)</span>が<span class="math inline">\(x^{-1}\)</span>の逆元が<span class="math inline">\(x\)</span>であることを表していることから従う. ◻</p>
+</div>
+
+
+<div class="prop">
+<p><strong>命題 9</strong> (簡約律). <span class="math inline">\(G\)</span>を群とする. このとき<span class="math inline">\(a,x,y\in G\)</span>として以下の簡約律が成り立つ.
+<span class="math display">\[\begin{align*}
+        ax=ay\Longleftrightarrow x=y\\
+        xa=ya\Longleftrightarrow x=y
+    
+\end{align*}\]</span></p>
+</div>
+
+
+<div class="proof">
+<p><strong>証明.</strong> <span class="math inline">\(x=y\)</span>であるとき, 両辺に左から<span class="math inline">\(a\)</span>, 右から<span class="math inline">\(a\)</span>をそれぞれかけることで<span class="math inline">\(ax=ay\)</span>, <span class="math inline">\(xa=ya\)</span>が得られる. <span class="math inline">\(ax=ay\)</span>ならば両辺に左から<span class="math inline">\(a^{-1}\)</span>をかけることで <span class="math display">\[\begin{align*}
+            a^{-1}(ax) &amp;= a^{-1}(ay) \\
+            (a^{-1}a)x &amp;= (a^{-1}a)y \\
+            x &amp;= y
+        
+\end{align*}\]</span> が得られる. 同様に<span class="math inline">\(xa=ya\)</span>であるときも, 両辺に右から<span class="math inline">\(a^{-1}\)</span>をかけることで<span class="math inline">\(x=y\)</span>が得られる. ◻</p>
+</div>
+
+
+<h3 id="有限群-無限群の定義">有限群, 無限群の定義</h3>
+
+
+<div class="defi" id="def:ord-grp">
+<p><strong>定義 10</strong> (有限群, 無限群). 群<span class="math inline">\(G\)</span>が有限個の元からなるとき<span class="math inline">\(G\)</span>を<strong>有限群(finite
+group)</strong>という. このとき<span class="math inline">\(G\)</span>の集合としての濃度<span class="math inline">\(|G|\)</span>を<span class="math inline">\(G\)</span>の<strong>位数(order)</strong>という.
+群<span class="math inline">\(G\)</span>が有限群でないとき<span class="math inline">\(G\)</span>を<strong>無限群(infinite
+group)</strong>という.</p>
+</div>
+
+
+<h3 id="群の部分集合の積">群の部分集合の積</h3>
+
+
+<p><span class="math inline">\(S,T\)</span>を<span class="math inline">\(G\)</span>の部分集合とする.
+このとき群の演算を用いて部分集合<span class="math inline">\(S\)</span>,
+<span class="math inline">\(T\)</span>の積を <span class="math display">\[\begin{align*}
+        ST:=\{st\mid s\in S,t\in T\}
+    
+\end{align*}\]</span> と定める. これは再び<span class="math inline">\(G\)</span>の部分集合になっている. 特に<span class="math inline">\(g\in G\)</span>に対して<span class="math inline">\(\{g\}S\)</span>を<span class="math inline">\(gS\)</span>, <span class="math inline">\(S\{g\}\)</span>を<span class="math inline">\(Sg\)</span>と表す.</p>
+
+
+<div class="otherpagediv">
+<div class="previousdiv">
+<a class="previous" href="https://sites.google.com/view/atlas-mathematics/"></a>
+</div>
+<div class="homediv">
+<a class="home" href="https://sites.google.com/view/atlas-mathematics">ホームへ戻る</a>
+</div>
+<div class="nextdiv">
+<a class="next"></a>
+</div>
+</div>
+<hr>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeAZyMWQTxoFubkqo9KDTgFwoRSz8bRgF35a4y7ecYxxK5ldg/viewform?embedded=true" srcdoc="
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+*{
+            font-family:'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
+}
+h3{
+margin:0px;
+}
+form{
+  width:100%;
+  margin:0px auto;
+}
+.item{
+  margin-bottom:0px;
+}
+label{
+  width:100%;
+display:flex;
+margin-bottom:-15px;
+}
+.inputs{
+  width:100%;
+  box-sizing:border-box;
+font-family : inherit;
+}
+input[type='text'],input[type='email']{
+  border: solid 1px #aaa;
+  border-radius:5px;
+  padding:10px;
+  font-size: 15px;
+  height:40px;
+}
+textarea{
+  border: solid 1px #aaa;
+  border-radius:5px;
+  padding: 10px;
+  height: 100px;
+  font-size: 15px;
+  resize:none;
+}
+.btn-area{
+  text-align: center;
+}
+button[type='submit']{
+  background: #1e88c5;
+  border-radius:5px;
+  border: none;
+  color: white;
+  font-size:17px;
+  font-weight:bold;
+  padding: 10px 20px;
+  margin-top:10px;
+}
+.submitbutton{
+  text-align:right;
+}
+.label1{
+  border-left:solid 3px #1e88c5;
+  padding-left: 10px;
+  height:25px;
+}
+.label2{font-size:10px;color:red;}
+::placeholder{
+            font-family:'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'ヒラギノ角ゴ Pro W3', 'メイリオ', sans-serif;
+font-size:13px;
+}
+@media screen and (min-width:800px){
+textarea{height:140px;}
+.item{display:flex;margin-top:20px;}
+.inputs{width:180%;margin-left:5%;}
+}
+    </style>
+</head>
+<body>
+<h3>意見・感想フォーム</h3>
+    <form target='hidden_iframe' onsubmit='submitted=true;' action='https://docs.google.com/forms/u/0/d/e/1FAIpQLSeAZyMWQTxoFubkqo9KDTgFwoRSz8bRgF35a4y7ecYxxK5ldg/formResponse' method='POST'>
+        <div class='item'><label for='1'><p class='label1'>お名前（ニックネームも可）<span class='label2'>必須</span></p></label><input class='inputs' id='1' type='text' name='entry.1265409104' required></div>
+        <div class='item'><label for='2'><p class='label1'>意見・提案・要望など　<span class='label2'>必須</span></p></label><textarea class='inputs' id='2' name='entry.345645774' placeholder='例）この分野を扱ってほしい&#13;&#10;　　誤りを見つけた&#13;&#10;　　ここを改善すると良いと思う&#13;&#10;　　こんなページを作ってほしい' required></textarea></div>
+        <div class='item'><label for='3'><p class='label1'>感想・コメントなど</p></label><textarea class='inputs' id='3' name='entry.1352839582'></textarea></div>
+        <div class='submitbutton'><button type='submit'>送信</button></div>
+    </form>
+
+<script type='text/javascript'>var submitted = false;</script>
+<iframe name='hidden_iframe' style='display:none;' id='hidden_iframe' onload='if(submitted){document.documentElement.innerHTML =`<html><head><style>body{font-family:&quot;Yu Gothic Medium&quot;, &quot;游ゴシック Medium&quot;, YuGothic, &quot;游ゴシック体&quot;, &quot;ヒラギノ角ゴ Pro W3&quot;, &quot;メイリオ&quot;, sans-serif;}</style></head><body><h3>意見・感想フォーム</h3><p>フォームを送信しました。<br>いただいたご意見・ご感想は今後のサイトづくりの参考にさせていただきます。</p></body></html>`;}'></iframe>
+</body>
+</html>"></iframe>
+<footer><p>©2025 Atlasez</p></footer></body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "DivisionName": "Dummy",
+  "Articles": {
+    "ArticleA": {
+      "ArticleName": "ArticleA",
+      "Description": "alpha",
+      "Source": [
+        {"ArticleID": "ArticleB", "priority": 2},
+        {"ArticleID": "ArticleC", "priority": 4}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleD", "priority": 1}
+      ]
+    },
+    "ArticleB": {
+      "ArticleName": "ArticleB",
+      "Description": "beta",
+      "Source": [
+        {"ArticleID": "ArticleA", "priority": 3}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleE", "priority": 2},
+        {"ArticleID": "ArticleF", "priority": 4}
+      ]
+    },
+    "ArticleC": {
+      "ArticleName": "ArticleC",
+      "Description": "gamma",
+      "Source": [],
+      "Utilization": [
+        {"ArticleID": "ArticleA", "priority": 2},
+        {"ArticleID": "ArticleG", "priority": 3}
+      ]
+    },
+    "ArticleD": {
+      "ArticleName": "ArticleD",
+      "Description": "delta",
+      "Source": [
+        {"ArticleID": "ArticleH", "priority": 1}
+      ],
+      "Utilization": []
+    },
+    "ArticleE": {
+      "ArticleName": "ArticleE",
+      "Description": "epsilon",
+      "Source": [
+        {"ArticleID": "ArticleB", "priority": 1}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleI", "priority": 2}
+      ]
+    },
+    "ArticleF": {
+      "ArticleName": "ArticleF",
+      "Description": "zeta",
+      "Source": [
+        {"ArticleID": "ArticleB", "priority": 2},
+        {"ArticleID": "ArticleJ", "priority": 3}
+      ],
+      "Utilization": []
+    },
+    "ArticleG": {
+      "ArticleName": "ArticleG",
+      "Description": "eta",
+      "Source": [
+        {"ArticleID": "ArticleC", "priority": 1}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleH", "priority": 4}
+      ]
+    },
+    "ArticleH": {
+      "ArticleName": "ArticleH",
+      "Description": "theta",
+      "Source": [
+        {"ArticleID": "ArticleG", "priority": 2}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleD", "priority": 3}
+      ]
+    },
+    "ArticleI": {
+      "ArticleName": "ArticleI",
+      "Description": "iota",
+      "Source": [],
+      "Utilization": []
+    },
+    "ArticleJ": {
+      "ArticleName": "ArticleJ",
+      "Description": "kappa",
+      "Source": [
+        {"ArticleID": "ArticleF", "priority": 1}
+      ],
+      "Utilization": [
+        {"ArticleID": "ArticleA", "priority": 4}
+      ]
+    }
+  }
+}
