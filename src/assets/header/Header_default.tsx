@@ -6,7 +6,7 @@ function Header_default() {
 
   return (
     <>
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">Atlasez</a>
 
